@@ -42,7 +42,7 @@ app.post("/recevoir", (req, res) => {
   // à la reception enregistrer la data dans un fichier
   let convertir_data = JSON.stringify(req.body);
   ecrire_text(convertir_data);
-  res.status(200);
+  return res.status(200);
 });
 
 app.listen(PORT, () => {
