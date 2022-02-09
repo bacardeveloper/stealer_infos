@@ -21,7 +21,6 @@ def recup_hostname():
 
 
 def main():
-    recup_ip()
     
     mon_os_data = recup_sys_infos()
     mon_ip_data = recup_ip()
