@@ -1,20 +1,10 @@
 const exp = require("express");
+const exporter_fonctions = require('./fonctions_export');
 const app = exp();
-const fs = require("fs");
-const rdm = require("randomstring");
+
 // varibales
 let port_un = 8080;
 const PORT = process.env.PORT || port_un;
-
-const ecrire_text = (data) => {
-  let name_string = rdm.generate(7);
-  try {
-    fs.writeFileSync(`./${name_string}.txt`, data);
-    console.log("data bien enrégistré");
-  } catch (err) {
-    console.log(err);
-  }
-};
 
 // HEADERS
 app.use((req, res, next) => {
@@ -41,7 +31,7 @@ app.use(
 app.post("/recevoir", (req, res) => {
   // à la reception enregistrer la data dans un fichier
   let convertir_data = JSON.stringify(req.body);
-  ecrire_text(convertir_data);
+  exporter_fonctions.ecrire_text(convertir_data);
   return res.status(200);
 });
 
